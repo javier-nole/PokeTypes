@@ -8,6 +8,7 @@ import { SEVERITY } from '@/components/severity';
 import { SearchBox } from '@/components/SearchBox';
 import { Sprite } from '@/components/Sprite';
 import { TypeBars, TypeChip } from '@/components/TypeChip';
+import { withBasePath } from '@/lib/base-path';
 import { collectExistingTypings, teamCoverage } from '@/lib/effectiveness';
 import { formatMultiplier, multiplierAria, typeName, typingName } from '@/lib/i18n';
 import type { SearchEntry, SearchResult } from '@/lib/search';
@@ -44,7 +45,7 @@ export function TeamBuilder() {
   const [index, setIndex] = useState<readonly SearchEntry[] | null>(null);
 
   useEffect(() => {
-    void fetch('/search-index.json')
+    void fetch(withBasePath('/search-index.json'))
       .then((response) => (response.ok ? response.json() : Promise.reject(new Error('404'))))
       .then((data: SearchEntry[]) => setIndex(data))
       .catch(() => setIndex([]));

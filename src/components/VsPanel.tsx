@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { OFFENSIVE_INK, SEVERITY } from '@/components/severity';
 import { SearchBox } from '@/components/SearchBox';
 import { TypeBars, TypeChip } from '@/components/TypeChip';
+import { withBasePath } from '@/lib/base-path';
 import { matchup, type MatchupSide, type MatchupVerdict } from '@/lib/effectiveness';
 import { formatMultiplier, typeName, typingName, typingSlug } from '@/lib/i18n';
 import { parseTypingSlug } from '@/lib/i18n';
@@ -79,7 +80,7 @@ export function VsPanel() {
   const [index, setIndex] = useState<readonly SearchEntry[] | null>(null);
 
   useEffect(() => {
-    void fetch('/search-index.json')
+    void fetch(withBasePath('/search-index.json'))
       .then((response) => (response.ok ? response.json() : Promise.reject(new Error('404'))))
       .then((data: SearchEntry[]) => setIndex(data))
       .catch(() => setIndex([]));

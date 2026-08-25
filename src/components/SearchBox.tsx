@@ -6,6 +6,7 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
 import { Sprite } from '@/components/Sprite';
 import { TypeBars } from '@/components/TypeChip';
+import { withBasePath } from '@/lib/base-path';
 import { typingSlug } from '@/lib/i18n';
 import { didYouMean, search, type SearchEntry, type SearchResult } from '@/lib/search';
 import { typingName } from '@/lib/i18n';
@@ -103,7 +104,7 @@ export function SearchBox({
   const loadIndex = useCallback(() => {
     if (index !== null || loading) return;
     setLoading(true);
-    void fetch('/search-index.json')
+    void fetch(withBasePath('/search-index.json'))
       .then((response) => (response.ok ? response.json() : Promise.reject(new Error('404'))))
       .then((data: SearchEntry[]) => setIndex(data))
       .catch(() => setIndex([]))
