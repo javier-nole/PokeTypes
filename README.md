@@ -2,6 +2,8 @@
 
 Consulta de efectividades de tipos Pokémon para nuzlocke y modo historia. Responde la pregunta en vez de enseñarte la tabla de 18×18.
 
+**▶ En vivo: [javier-nole.github.io/PokeTypes](https://javier-nole.github.io/PokeTypes/)**
+
 Sitio 100% estático: sin backend, sin base de datos, sin llamadas a ninguna API en runtime.
 
 ## Comandos
