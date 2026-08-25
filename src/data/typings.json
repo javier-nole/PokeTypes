@@ -1,0 +1,1280 @@
+[
+  {
+    "slug": "water",
+    "types": [
+      "water"
+    ],
+    "count": 77
+  },
+  {
+    "slug": "normal",
+    "types": [
+      "normal"
+    ],
+    "count": 76
+  },
+  {
+    "slug": "grass",
+    "types": [
+      "grass"
+    ],
+    "count": 47
+  },
+  {
+    "slug": "psychic",
+    "types": [
+      "psychic"
+    ],
+    "count": 43
+  },
+  {
+    "slug": "electric",
+    "types": [
+      "electric"
+    ],
+    "count": 40
+  },
+  {
+    "slug": "fire",
+    "types": [
+      "fire"
+    ],
+    "count": 37
+  },
+  {
+    "slug": "fighting",
+    "types": [
+      "fighting"
+    ],
+    "count": 31
+  },
+  {
+    "slug": "normal-flying",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "count": 28
+  },
+  {
+    "slug": "bug",
+    "types": [
+      "bug"
+    ],
+    "count": 23
+  },
+  {
+    "slug": "fairy",
+    "types": [
+      "fairy"
+    ],
+    "count": 22
+  },
+  {
+    "slug": "ice",
+    "types": [
+      "ice"
+    ],
+    "count": 21
+  },
+  {
+    "slug": "ghost",
+    "types": [
+      "ghost"
+    ],
+    "count": 18
+  },
+  {
+    "slug": "ground",
+    "types": [
+      "ground"
+    ],
+    "count": 17
+  },
+  {
+    "slug": "rock",
+    "types": [
+      "rock"
+    ],
+    "count": 17
+  },
+  {
+    "slug": "dark",
+    "types": [
+      "dark"
+    ],
+    "count": 17
+  },
+  {
+    "slug": "grass-poison",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "count": 16
+  },
+  {
+    "slug": "poison",
+    "types": [
+      "poison"
+    ],
+    "count": 16
+  },
+  {
+    "slug": "flying-bug",
+    "types": [
+      "flying",
+      "bug"
+    ],
+    "count": 14
+  },
+  {
+    "slug": "poison-bug",
+    "types": [
+      "poison",
+      "bug"
+    ],
+    "count": 14
+  },
+  {
+    "slug": "dragon",
+    "types": [
+      "dragon"
+    ],
+    "count": 14
+  },
+  {
+    "slug": "steel",
+    "types": [
+      "steel"
+    ],
+    "count": 12
+  },
+  {
+    "slug": "water-rock",
+    "types": [
+      "water",
+      "rock"
+    ],
+    "count": 11
+  },
+  {
+    "slug": "psychic-steel",
+    "types": [
+      "psychic",
+      "steel"
+    ],
+    "count": 11
+  },
+  {
+    "slug": "psychic-fairy",
+    "types": [
+      "psychic",
+      "fairy"
+    ],
+    "count": 10
+  },
+  {
+    "slug": "water-ground",
+    "types": [
+      "water",
+      "ground"
+    ],
+    "count": 10
+  },
+  {
+    "slug": "grass-ghost",
+    "types": [
+      "grass",
+      "ghost"
+    ],
+    "count": 10
+  },
+  {
+    "slug": "ground-rock",
+    "types": [
+      "ground",
+      "rock"
+    ],
+    "count": 9
+  },
+  {
+    "slug": "flying-dragon",
+    "types": [
+      "flying",
+      "dragon"
+    ],
+    "count": 9
+  },
+  {
+    "slug": "flying-psychic",
+    "types": [
+      "flying",
+      "psychic"
+    ],
+    "count": 9
+  },
+  {
+    "slug": "fire-fighting",
+    "types": [
+      "fire",
+      "fighting"
+    ],
+    "count": 9
+  },
+  {
+    "slug": "steel-fairy",
+    "types": [
+      "steel",
+      "fairy"
+    ],
+    "count": 9
+  },
+  {
+    "slug": "fire-ghost",
+    "types": [
+      "fire",
+      "ghost"
+    ],
+    "count": 9
+  },
+  {
+    "slug": "water-psychic",
+    "types": [
+      "water",
+      "psychic"
+    ],
+    "count": 8
+  },
+  {
+    "slug": "water-ice",
+    "types": [
+      "water",
+      "ice"
+    ],
+    "count": 8
+  },
+  {
+    "slug": "water-flying",
+    "types": [
+      "water",
+      "flying"
+    ],
+    "count": 8
+  },
+  {
+    "slug": "flying-dark",
+    "types": [
+      "flying",
+      "dark"
+    ],
+    "count": 8
+  },
+  {
+    "slug": "bug-steel",
+    "types": [
+      "bug",
+      "steel"
+    ],
+    "count": 8
+  },
+  {
+    "slug": "ground-steel",
+    "types": [
+      "ground",
+      "steel"
+    ],
+    "count": 8
+  },
+  {
+    "slug": "water-dark",
+    "types": [
+      "water",
+      "dark"
+    ],
+    "count": 8
+  },
+  {
+    "slug": "ground-dragon",
+    "types": [
+      "ground",
+      "dragon"
+    ],
+    "count": 8
+  },
+  {
+    "slug": "fire-flying",
+    "types": [
+      "fire",
+      "flying"
+    ],
+    "count": 7
+  },
+  {
+    "slug": "electric-flying",
+    "types": [
+      "electric",
+      "flying"
+    ],
+    "count": 7
+  },
+  {
+    "slug": "grass-flying",
+    "types": [
+      "grass",
+      "flying"
+    ],
+    "count": 7
+  },
+  {
+    "slug": "grass-dark",
+    "types": [
+      "grass",
+      "dark"
+    ],
+    "count": 7
+  },
+  {
+    "slug": "rock-steel",
+    "types": [
+      "rock",
+      "steel"
+    ],
+    "count": 7
+  },
+  {
+    "slug": "poison-dark",
+    "types": [
+      "poison",
+      "dark"
+    ],
+    "count": 7
+  },
+  {
+    "slug": "ground-ghost",
+    "types": [
+      "ground",
+      "ghost"
+    ],
+    "count": 7
+  },
+  {
+    "slug": "grass-dragon",
+    "types": [
+      "grass",
+      "dragon"
+    ],
+    "count": 7
+  },
+  {
+    "slug": "grass-bug",
+    "types": [
+      "grass",
+      "bug"
+    ],
+    "count": 6
+  },
+  {
+    "slug": "water-poison",
+    "types": [
+      "water",
+      "poison"
+    ],
+    "count": 6
+  },
+  {
+    "slug": "normal-psychic",
+    "types": [
+      "normal",
+      "psychic"
+    ],
+    "count": 6
+  },
+  {
+    "slug": "bug-rock",
+    "types": [
+      "bug",
+      "rock"
+    ],
+    "count": 6
+  },
+  {
+    "slug": "water-dragon",
+    "types": [
+      "water",
+      "dragon"
+    ],
+    "count": 6
+  },
+  {
+    "slug": "grass-fighting",
+    "types": [
+      "grass",
+      "fighting"
+    ],
+    "count": 6
+  },
+  {
+    "slug": "fighting-psychic",
+    "types": [
+      "fighting",
+      "psychic"
+    ],
+    "count": 6
+  },
+  {
+    "slug": "grass-fairy",
+    "types": [
+      "grass",
+      "fairy"
+    ],
+    "count": 6
+  },
+  {
+    "slug": "normal-dark",
+    "types": [
+      "normal",
+      "dark"
+    ],
+    "count": 6
+  },
+  {
+    "slug": "normal-fairy",
+    "types": [
+      "normal",
+      "fairy"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "water-fighting",
+    "types": [
+      "water",
+      "fighting"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "poison-ghost",
+    "types": [
+      "poison",
+      "ghost"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "grass-psychic",
+    "types": [
+      "grass",
+      "psychic"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "ice-psychic",
+    "types": [
+      "ice",
+      "psychic"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "flying-rock",
+    "types": [
+      "flying",
+      "rock"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "fighting-bug",
+    "types": [
+      "fighting",
+      "bug"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "fire-rock",
+    "types": [
+      "fire",
+      "rock"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "fire-dark",
+    "types": [
+      "fire",
+      "dark"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "water-bug",
+    "types": [
+      "water",
+      "bug"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "psychic-dragon",
+    "types": [
+      "psychic",
+      "dragon"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "fighting-steel",
+    "types": [
+      "fighting",
+      "steel"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "fighting-poison",
+    "types": [
+      "fighting",
+      "poison"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "dragon-steel",
+    "types": [
+      "dragon",
+      "steel"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "fire-psychic",
+    "types": [
+      "fire",
+      "psychic"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "fighting-dark",
+    "types": [
+      "fighting",
+      "dark"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "normal-grass",
+    "types": [
+      "normal",
+      "grass"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "dragon-dark",
+    "types": [
+      "dragon",
+      "dark"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "electric-dragon",
+    "types": [
+      "electric",
+      "dragon"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "ice-dragon",
+    "types": [
+      "ice",
+      "dragon"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "fighting-flying",
+    "types": [
+      "fighting",
+      "flying"
+    ],
+    "count": 5
+  },
+  {
+    "slug": "poison-ground",
+    "types": [
+      "poison",
+      "ground"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "electric-steel",
+    "types": [
+      "electric",
+      "steel"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "flying-fairy",
+    "types": [
+      "flying",
+      "fairy"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "water-fairy",
+    "types": [
+      "water",
+      "fairy"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "flying-steel",
+    "types": [
+      "flying",
+      "steel"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "water-grass",
+    "types": [
+      "water",
+      "grass"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "ghost-dark",
+    "types": [
+      "ghost",
+      "dark"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "fire-ground",
+    "types": [
+      "fire",
+      "ground"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "ghost-dragon",
+    "types": [
+      "ghost",
+      "dragon"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "ground-dark",
+    "types": [
+      "ground",
+      "dark"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "electric-bug",
+    "types": [
+      "electric",
+      "bug"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "fire-bug",
+    "types": [
+      "fire",
+      "bug"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "fire-dragon",
+    "types": [
+      "fire",
+      "dragon"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "ghost-steel",
+    "types": [
+      "ghost",
+      "steel"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "psychic-dark",
+    "types": [
+      "psychic",
+      "dark"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "poison-dragon",
+    "types": [
+      "poison",
+      "dragon"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "psychic-ghost",
+    "types": [
+      "psychic",
+      "ghost"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "normal-fighting",
+    "types": [
+      "normal",
+      "fighting"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "poison-rock",
+    "types": [
+      "poison",
+      "rock"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "electric-rock",
+    "types": [
+      "electric",
+      "rock"
+    ],
+    "count": 4
+  },
+  {
+    "slug": "poison-flying",
+    "types": [
+      "poison",
+      "flying"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "water-electric",
+    "types": [
+      "water",
+      "electric"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "ground-flying",
+    "types": [
+      "ground",
+      "flying"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "ice-dark",
+    "types": [
+      "ice",
+      "dark"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "ice-ground",
+    "types": [
+      "ice",
+      "ground"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "psychic-rock",
+    "types": [
+      "psychic",
+      "rock"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "grass-rock",
+    "types": [
+      "grass",
+      "rock"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "grass-ground",
+    "types": [
+      "grass",
+      "ground"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "flying-ghost",
+    "types": [
+      "flying",
+      "ghost"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "grass-ice",
+    "types": [
+      "grass",
+      "ice"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "water-ghost",
+    "types": [
+      "water",
+      "ghost"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "grass-steel",
+    "types": [
+      "grass",
+      "steel"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "dark-steel",
+    "types": [
+      "dark",
+      "steel"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "flying",
+    "types": [
+      "flying"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "normal-fire",
+    "types": [
+      "normal",
+      "fire"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "ice-rock",
+    "types": [
+      "ice",
+      "rock"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "rock-fairy",
+    "types": [
+      "rock",
+      "fairy"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "fire-poison",
+    "types": [
+      "fire",
+      "poison"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "normal-dragon",
+    "types": [
+      "normal",
+      "dragon"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "fighting-dragon",
+    "types": [
+      "fighting",
+      "dragon"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "psychic-bug",
+    "types": [
+      "psychic",
+      "bug"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "dark-fairy",
+    "types": [
+      "dark",
+      "fairy"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "electric-fighting",
+    "types": [
+      "electric",
+      "fighting"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "fire-grass",
+    "types": [
+      "fire",
+      "grass"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "poison-psychic",
+    "types": [
+      "poison",
+      "psychic"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "electric-grass",
+    "types": [
+      "electric",
+      "grass"
+    ],
+    "count": 3
+  },
+  {
+    "slug": "ice-flying",
+    "types": [
+      "ice",
+      "flying"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "rock-dark",
+    "types": [
+      "rock",
+      "dark"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "ground-bug",
+    "types": [
+      "ground",
+      "bug"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "ground-psychic",
+    "types": [
+      "ground",
+      "psychic"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "ice-ghost",
+    "types": [
+      "ice",
+      "ghost"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "fire-steel",
+    "types": [
+      "fire",
+      "steel"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "electric-ground",
+    "types": [
+      "electric",
+      "ground"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "fighting-rock",
+    "types": [
+      "fighting",
+      "rock"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "normal-ground",
+    "types": [
+      "normal",
+      "ground"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "normal-electric",
+    "types": [
+      "normal",
+      "electric"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "rock-dragon",
+    "types": [
+      "rock",
+      "dragon"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "electric-fairy",
+    "types": [
+      "electric",
+      "fairy"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "ice-fighting",
+    "types": [
+      "ice",
+      "fighting"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "bug-fairy",
+    "types": [
+      "bug",
+      "fairy"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "ghost-fairy",
+    "types": [
+      "ghost",
+      "fairy"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "fighting-ghost",
+    "types": [
+      "fighting",
+      "ghost"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "electric-poison",
+    "types": [
+      "electric",
+      "poison"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "ice-bug",
+    "types": [
+      "ice",
+      "bug"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "electric-ice",
+    "types": [
+      "electric",
+      "ice"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "normal-poison",
+    "types": [
+      "normal",
+      "poison"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "poison-steel",
+    "types": [
+      "poison",
+      "steel"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "poison-fairy",
+    "types": [
+      "poison",
+      "fairy"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "ice-steel",
+    "types": [
+      "ice",
+      "steel"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "normal-ghost",
+    "types": [
+      "normal",
+      "ghost"
+    ],
+    "count": 2
+  },
+  {
+    "slug": "bug-ghost",
+    "types": [
+      "bug",
+      "ghost"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "water-steel",
+    "types": [
+      "water",
+      "steel"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "normal-water",
+    "types": [
+      "normal",
+      "water"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "electric-ghost",
+    "types": [
+      "electric",
+      "ghost"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "fire-water",
+    "types": [
+      "fire",
+      "water"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "electric-dark",
+    "types": [
+      "electric",
+      "dark"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "bug-dark",
+    "types": [
+      "bug",
+      "dark"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "fighting-ground",
+    "types": [
+      "fighting",
+      "ground"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "fighting-fairy",
+    "types": [
+      "fighting",
+      "fairy"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "fire-electric",
+    "types": [
+      "fire",
+      "electric"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "dragon-fairy",
+    "types": [
+      "dragon",
+      "fairy"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "electric-psychic",
+    "types": [
+      "electric",
+      "psychic"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "ice-fairy",
+    "types": [
+      "ice",
+      "fairy"
+    ],
+    "count": 1
+  },
+  {
+    "slug": "fire-ice",
+    "types": [
+      "fire",
+      "ice"
+    ],
+    "count": 1
+  }
+]

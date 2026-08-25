@@ -1,0 +1,180 @@
+@import 'tailwindcss';
+
+/*
+ * Tokens del diseño (`Efectividades de tipos.html`).
+ *
+ * Regla del sistema: los 18 colores canónicos de tipo SÓLO se usan como
+ * barra de 4-7px dentro de un chip. El texto usa la variante `-ink`, que
+ * pasa AA sobre superficie oscura. Y el color nunca porta información solo:
+ * cada nivel de severidad lleva número, palabra, medidor y posición.
+ */
+
+@theme {
+  /* Superficies */
+  --color-bg: #0a0908;
+  --color-panel: #100f0d;
+  --color-surface: #1a1815;
+  --color-surface-2: #221f1b;
+  --color-surface-3: #2b2722;
+  --color-line: #221f1b;
+  --color-border: #35302a;
+  --color-border-strong: #4a443c;
+
+  /* Texto */
+  --color-ink: #f3eee5;
+  --color-ink-muted: #a79e92;
+  --color-ink-dim: #9a9186;
+
+  --color-accent: #5bd9a2;
+  --color-accent-hover: #7fe5b7;
+
+  /* Severidad defensiva */
+  --color-mult4-bg: #3a100c;
+  --color-mult4-border: #6a231b;
+  --color-mult4-ink: #ff6b5e;
+
+  --color-mult2-bg: #331b0c;
+  --color-mult2-border: #6b4a22;
+  --color-mult2-ink: #ffa24e;
+
+  --color-mult1-bg: #1a1815;
+  --color-mult1-cell: #1e1b17;
+  --color-mult1-ink: #a79e92;
+
+  --color-multhalf-bg: #10241b;
+  --color-multhalf-border: #23543e;
+  --color-multhalf-ink: #5bd9a2;
+
+  /* ×¼ no aparece en el mockup: derivado del ×½, un paso más apagado. */
+  --color-multquarter-bg: #0c1a14;
+  --color-multquarter-border: #1b4030;
+  --color-multquarter-ink: #7fe5b7;
+
+  --color-mult0-bg: #101f2c;
+  --color-mult0-border: #1e4460;
+  --color-mult0-ink: #6bb6f2;
+
+  /* Cabeceras de fila en la matriz de equipo */
+  --color-threat-top: #2a0f0b;
+  --color-threat: #221410;
+
+  --font-sans: var(--font-archivo), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, 'SFMono-Regular', monospace;
+}
+
+/*
+ * Los 18 tipos. Fuera de `@theme` porque no queremos 36 utilidades de
+ * Tailwind que nadie usa: se consumen con `var(--t-water)` desde el chip.
+ * Los 16 primeros pares son literales del mockup; Psíquico y Siniestro
+ * llevan un `-ink` derivado (el mockup no los define) verificado contra
+ * #100F0D a ≥4.5:1.
+ */
+:root {
+  --t-normal: #a8a77a;
+  --t-normal-ink: #cfceab;
+  --t-fire: #ee8130;
+  --t-fire-ink: #ffa75f;
+  --t-water: #6390f0;
+  --t-water-ink: #95b4f8;
+  --t-electric: #f7d02c;
+  --t-electric-ink: #ffdf57;
+  --t-grass: #7ac74c;
+  --t-grass-ink: #a3de7b;
+  --t-ice: #96d9d6;
+  --t-ice-ink: #afe7e4;
+  --t-fighting: #c22e28;
+  --t-fighting-ink: #f5776f;
+  --t-poison: #a33ea1;
+  --t-poison-ink: #db86d9;
+  --t-ground: #e2bf65;
+  --t-ground-ink: #edd189;
+  --t-flying: #a98ff3;
+  --t-flying-ink: #c1adff;
+  --t-psychic: #f95587;
+  --t-psychic-ink: #ff8fae;
+  --t-bug: #a6b91a;
+  --t-bug-ink: #c8da3e;
+  --t-rock: #b6a136;
+  --t-rock-ink: #d6c158;
+  --t-ghost: #735797;
+  --t-ghost-ink: #b79ad6;
+  --t-dragon: #6f35fc;
+  --t-dragon-ink: #ac90ff;
+  --t-dark: #705746;
+  --t-dark-ink: #c4a891;
+  --t-steel: #b7b7ce;
+  --t-steel-ink: #cdcde0;
+  --t-fairy: #d685ad;
+  --t-fairy-ink: #edacc9;
+
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/*
+ * Los enlaces dentro de texto corrido no pueden distinguirse sólo por el
+ * color — es el mismo principio que rige la escala de severidad. Los
+ * enlaces que ya son tarjeta o botón traen su propia superficie y no
+ * necesitan subrayado.
+ */
+.text-accent {
+  color: var(--color-accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+.text-accent:hover {
+  color: var(--color-accent-hover);
+  border-bottom-color: var(--color-accent-hover);
+}
+
+/* El input ya trae su propio botón de borrar; el nativo lo duplicaría. */
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+::selection {
+  background: var(--color-mult4-ink);
+  color: var(--color-panel);
+}
+
+/* El foco tiene que verse: es la mitad del criterio de accesibilidad. */
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Sólo para lectores de pantalla. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
