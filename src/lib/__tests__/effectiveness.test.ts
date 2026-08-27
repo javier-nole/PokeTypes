@@ -346,6 +346,41 @@ describe('teamCoverage', () => {
     expect(coverage.offensiveGaps).toHaveLength(18);
   });
 
+  it('cada celda ofensiva es el mejor golpe de ese miembro', () => {
+    const coverage = teamCoverage(TEAM, TYPINGS);
+    const grass = coverage.offense.find((row) => row.defender === 'grass');
+
+    // Gyarados entra con Volador, Arcanine con Fuego y Nidoking con Veneno;
+    // Alakazam, Snorlax y Golem no pasan de neutro.
+    expect(grass?.cells).toEqual([2, 2, 2, 1, 1, 1]);
+    expect(grass?.superCount).toBe(3);
+    expect(grass?.quadCount).toBe(0);
+  });
+
+  it('cuenta como muro al miembro cuyo mejor golpe no entra ni neutro', () => {
+    const coverage = teamCoverage(TEAM, TYPINGS);
+    const rock = coverage.offense.find((row) => row.defender === 'rock');
+
+    // Arcanine (Fuego ×½) y Snorlax (Normal ×½) se estrellan contra Roca.
+    expect(rock?.cells).toEqual([2, 0.5, 2, 1, 0.5, 2]);
+    expect(rock?.wallCount).toBe(2);
+  });
+
+  it('los tipos a los que no pega nadie son exactamente los huecos ofensivos', () => {
+    const coverage = teamCoverage(TEAM, TYPINGS);
+    const gaps = coverage.offense.filter((row) => row.superCount === 0).map((row) => row.defender);
+
+    expect(new Set(gaps)).toEqual(new Set(coverage.offensiveGaps));
+  });
+
+  it('ordena la cobertura por hueco, de menos cubierto a más', () => {
+    const coverage = teamCoverage(TEAM, TYPINGS);
+    const counts = coverage.offense.map((row) => row.superCount);
+
+    expect(coverage.offense).toHaveLength(18);
+    expect(counts).toEqual([...counts].sort((x, y) => x - y));
+  });
+
   it('un equipo de uno equivale a su perfil defensivo', () => {
     const coverage = teamCoverage([GYARADOS], TYPINGS);
     const profile = defensiveProfile(GYARADOS);

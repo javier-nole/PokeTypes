@@ -313,6 +313,18 @@ export interface TeamThreatRow {
   readonly resistCount: number;
 }
 
+export interface TeamOffenseRow {
+  readonly defender: PokemonType;
+  /** El mejor multiplicador que saca cada miembro, en el orden en que llegaron. */
+  readonly cells: readonly Multiplier[];
+  /** Miembros que le pegan súper efectivo. */
+  readonly superCount: number;
+  /** Miembros que le pegan ×4. */
+  readonly quadCount: number;
+  /** Miembros cuyo mejor golpe ni siquiera entra neutro. */
+  readonly wallCount: number;
+}
+
 export interface TeamCoverage {
   readonly members: readonly Typing[];
   /** Los 18 tipos como fila, ordenados por amenaza descendente. */
@@ -321,6 +333,8 @@ export interface TeamCoverage {
   readonly topThreat: TeamThreatRow | null;
   /** Filas a las que no cae nadie: el resto de la tabla, plegado. */
   readonly harmlessCount: number;
+  /** Los 18 tipos como víctima, ordenados por hueco descendente. */
+  readonly offense: readonly TeamOffenseRow[];
   /** Tipos simples a los que nadie del equipo pega ≥×2. */
   readonly offensiveGaps: readonly PokemonType[];
   /**
@@ -342,6 +356,18 @@ function compareThreat(x: TeamThreatRow, y: TeamThreatRow): number {
   return POKEMON_TYPES.indexOf(x.attacker) - POKEMON_TYPES.indexOf(y.attacker);
 }
 
+/**
+ * Ordena la cobertura por el hueco que deja: primero los tipos a los que no
+ * le pega nadie, luego aquellos a los que además el equipo ni roza, y en
+ * último término el orden canónico para que el resultado sea estable.
+ */
+function compareCoverage(x: TeamOffenseRow, y: TeamOffenseRow): number {
+  if (x.superCount !== y.superCount) return x.superCount - y.superCount;
+  if (x.wallCount !== y.wallCount) return y.wallCount - x.wallCount;
+  if (x.quadCount !== y.quadCount) return x.quadCount - y.quadCount;
+  return POKEMON_TYPES.indexOf(x.defender) - POKEMON_TYPES.indexOf(y.defender);
+}
+
 export function teamCoverage(
   members: readonly Typing[],
   existingTypings: readonly ExistingTyping[] = [],
@@ -357,6 +383,22 @@ export function teamCoverage(
       resistCount: cells.filter((cell) => cell < 1).length,
     };
   }).sort(compareThreat);
+
+  /*
+   * El espejo de `rows`: mismo cuadro, invertida la pregunta. Cada celda es
+   * lo mejor que ese miembro consigue con sus propios tipos, que es el mismo
+   * criterio con el que ya se calculan los huecos.
+   */
+  const offense = POKEMON_TYPES.map((defender) => {
+    const cells = members.map((member) => bestMultiplier(member, [defender], chart));
+    return {
+      defender,
+      cells,
+      superCount: cells.filter((cell) => cell >= 2).length,
+      quadCount: cells.filter((cell) => cell === 4).length,
+      wallCount: cells.filter((cell) => cell < 1).length,
+    };
+  }).sort(compareCoverage);
 
   // El equipo ataca con la unión de los tipos de sus miembros.
   const teamTypes = [...new Set(members.flat())];
@@ -376,6 +418,7 @@ export function teamCoverage(
     rows,
     topThreat,
     harmlessCount: rows.filter((row) => row.weakCount === 0).length,
+    offense,
     offensiveGaps,
     uncoveredTypings,
   };

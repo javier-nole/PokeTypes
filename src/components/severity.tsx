@@ -47,6 +47,21 @@ export const OFFENSIVE_INK: Record<Multiplier, string> = {
 };
 
 /**
+ * Las celdas del cuadro de cobertura, con la misma inversión de signo que
+ * `OFFENSIVE_INK`. Aquí el ×4 es la casilla verde de "esto lo revientas" y
+ * el ×0 la roja de "no tienes por dónde entrarle": exactamente al revés que
+ * en `SEVERITY`, donde el ×4 es lo que te mata.
+ */
+export const OFFENSIVE_CELL: Record<Multiplier, string> = {
+  4: 'bg-multquarter-bg text-multquarter-ink',
+  2: 'bg-multhalf-bg text-multhalf-ink',
+  1: 'bg-mult1-cell text-ink-muted',
+  0.5: 'bg-mult2-bg text-mult2-ink',
+  0.25: 'bg-mult2-bg text-mult2-ink',
+  0: 'bg-mult4-bg text-mult4-ink',
+};
+
+/**
  * Medidor de bloques: cuatro casillas, tantas llenas como el multiplicador.
  * Sólo aparece donde hay peligro (×4 y ×2); en las bandas defensivas buenas
  * el número y la palabra ya bastan y el medidor sería ruido.

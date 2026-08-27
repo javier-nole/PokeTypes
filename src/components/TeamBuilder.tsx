@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { SEVERITY } from '@/components/severity';
+import { OFFENSIVE_CELL, OFFENSIVE_INK, SEVERITY } from '@/components/severity';
 import { SearchBox } from '@/components/SearchBox';
 import { Sprite } from '@/components/Sprite';
 import { TypeBars, TypeChip } from '@/components/TypeChip';
@@ -168,10 +168,8 @@ export function TeamBuilder() {
       ) : (
         <>
           <ThreatMatrix members={members} threats={threats} />
-          <OffensiveGaps
-            gaps={coverage.offensiveGaps}
-            uncovered={coverage.uncoveredTypings.slice(0, 6)}
-          />
+          <CoverageMatrix members={members} rows={coverage.offense} />
+          <UncoveredTypings uncovered={coverage.uncoveredTypings.slice(0, 6)} />
         </>
       )}
     </div>
@@ -211,8 +209,11 @@ function ThreatMatrix({ members, threats }: MatrixProps) {
 
   return (
     <section aria-labelledby="amenazas">
-      <h2 id="amenazas" className="sr-only">
-        Amenazas defensivas del equipo
+      <h2
+        id="amenazas"
+        className="px-4 pb-2.5 font-mono text-[11px] font-bold tracking-[.14em] text-ink-muted sm:px-7"
+      >
+        QUÉ TUMBA A TU EQUIPO
       </h2>
 
       {/*
@@ -223,7 +224,7 @@ function ThreatMatrix({ members, threats }: MatrixProps) {
         style={{ gridTemplateColumns: `232px repeat(${members.length}, minmax(0, 1fr))` }}
       >
         <div className="flex items-end bg-panel px-5 py-3.5 font-mono text-[11px] tracking-[.14em] text-ink-dim">
-          TIPO ATACANTE
+          DEBILIDADES
         </div>
         {members.map((member) => (
           <div key={member.slug} className="flex flex-col items-center gap-1 bg-panel px-2.5 py-2">
@@ -349,61 +350,204 @@ function Row({
   );
 }
 
-function OffensiveGaps({
-  gaps,
+interface CoverageProps {
+  readonly members: readonly Member[];
+  readonly rows: readonly import('@/lib/effectiveness').TeamOffenseRow[];
+}
+
+/**
+ * El espejo de `ThreatMatrix`: mismo cuadro, invertida la pregunta. Aquí los
+ * 18 tipos son la víctima y la celda es lo mejor que ese miembro le hace.
+ *
+ * Paleta `OFFENSIVE_CELL`, no `SEVERITY`: en este cuadro un ×4 es que lo
+ * revientas, y pintarlo de rojo haría leer "peligro" donde pone "ganas".
+ *
+ * Ordenado por hueco descendente, así que se lee de arriba abajo y se para
+ * cuando dejan de aparecer filas en rojo.
+ */
+function CoverageMatrix({ members, rows }: CoverageProps) {
+  return (
+    <section aria-labelledby="cobertura" className="border-t border-line pt-4">
+      <h2
+        id="cobertura"
+        className="px-4 pb-2.5 font-mono text-[11px] font-bold tracking-[.14em] text-ink-muted sm:px-7"
+      >
+        A QUÉ LE PEGA TU EQUIPO
+      </h2>
+
+      {/* Escritorio: la matriz completa, con el mismo esqueleto que la defensiva. */}
+      <div
+        className="hidden gap-px bg-line md:grid"
+        style={{ gridTemplateColumns: `232px repeat(${members.length}, minmax(0, 1fr))` }}
+      >
+        <div className="flex items-end bg-panel px-5 py-3.5 font-mono text-[11px] tracking-[.14em] text-ink-dim">
+          EFECTIVIDAD
+        </div>
+        {members.map((member) => (
+          <div key={member.slug} className="flex flex-col items-center gap-1 bg-panel px-2.5 py-2">
+            <Sprite spriteId={member.spriteId} size={40} />
+            <span className="text-center text-sm font-bold">{shortName(member.name)}</span>
+            <TypeBars types={member.types} />
+          </div>
+        ))}
+
+        {rows.map((row, position) => (
+          <CoverageRow
+            key={row.defender}
+            row={row}
+            members={members}
+            first={position === 0 && row.superCount === 0}
+          />
+        ))}
+      </div>
+
+      {/*
+       * Móvil: igual que en el cuadro defensivo, la cuadrícula no cabe. Una
+       * tarjeta por tipo que responde "quién le entra", y los huecos cantan
+       * porque no tienen a nadie que enseñar.
+       */}
+      <ul className="m-0 flex list-none flex-col gap-2 px-4 pb-6 md:hidden">
+        {rows.map((row) => {
+          const hitters = members
+            .map((member, position) => ({ member, multiplier: row.cells[position] ?? 1 }))
+            .filter((entry) => entry.multiplier >= 2)
+            .sort((a, b) => b.multiplier - a.multiplier);
+
+          return (
+            <li
+              key={row.defender}
+              className={`flex flex-col gap-2.5 rounded-xl p-3.5 ${
+                row.superCount === 0 ? SEVERITY[2].surface : 'bg-surface'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <TypeChip type={row.defender} size="sm" tone="flat" />
+                <span
+                  className={`ml-auto font-mono text-xs font-bold ${
+                    row.superCount === 0 ? SEVERITY[2].ink : OFFENSIVE_INK[2]
+                  }`}
+                >
+                  {row.superCount === 0
+                    ? 'NADIE PEGA ×2'
+                    : `${row.superCount} ${row.superCount === 1 ? 'PEGA' : 'PEGAN'} ×2`}
+                </span>
+              </div>
+
+              {hitters.length > 0 ? (
+                <ul className="m-0 flex list-none flex-wrap gap-1.5 p-0">
+                  {hitters.map(({ member, multiplier }) => (
+                    <li key={member.slug}>
+                      <span
+                        className={`inline-flex h-9 items-center gap-2 rounded-lg bg-surface-2 px-2.5 text-[13.5px] font-semibold ${OFFENSIVE_INK[multiplier]}`}
+                      >
+                        <span className="font-mono font-bold">{formatMultiplier(multiplier)}</span>
+                        <span className="text-ink">{shortName(member.name)}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-[12.5px] text-ink-dim">
+                  Nadie del equipo le hace daño aumentado.
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
+function CoverageRow({
+  row,
+  members,
+  first,
+}: {
+  readonly row: CoverageProps['rows'][number];
+  readonly members: readonly Member[];
+  readonly first: boolean;
+}) {
+  const gap = row.superCount === 0;
+
+  return (
+    <>
+      <div
+        className={`flex items-center gap-3 px-5 py-3.5 ${
+          first ? 'bg-threat-top' : gap ? 'bg-threat' : 'bg-panel'
+        }`}
+      >
+        <TypeChip type={row.defender} size="xs" tone="flat" />
+        <span
+          className={`ml-auto font-mono text-xs font-bold ${
+            gap ? SEVERITY[2].ink : OFFENSIVE_INK[2]
+          }`}
+        >
+          {gap
+            ? 'NADIE PEGA ×2'
+            : `${row.superCount} ${row.superCount === 1 ? 'PEGA' : 'PEGAN'} ×2`}
+        </span>
+      </div>
+
+      {members.map((member, position) => {
+        const multiplier = row.cells[position] ?? 1;
+        return (
+          <div
+            key={member.slug}
+            className={`flex items-center justify-center py-4 font-mono font-bold ${
+              OFFENSIVE_CELL[multiplier]
+            } ${multiplier === 4 ? 'text-2xl' : multiplier === 2 ? 'text-[19px]' : 'text-[17px]'} ${
+              multiplier === 1 ? 'font-normal text-[15px]' : ''
+            }`}
+          >
+            {formatMultiplier(multiplier)}
+            <span className="sr-only">
+              {' '}
+              — {member.name} le hace {multiplierAria(multiplier)} a {typeName(row.defender)}
+            </span>
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
+/**
+ * Lo único que el cuadro de cobertura no puede enseñar: contra qué typings
+ * REALES no tienes nada, y con cuánta frecuencia te los vas a cruzar de
+ * verdad. Los chips de tipos sueltos que vivían aquí decían lo mismo que la
+ * columna izquierda del cuadro, pero sin el detalle de qué hace cada miembro.
+ */
+function UncoveredTypings({
   uncovered,
 }: {
-  readonly gaps: readonly import('@/lib/types').PokemonType[];
   readonly uncovered: readonly import('@/lib/types').ExistingTyping[];
 }) {
-  if (gaps.length === 0 && uncovered.length === 0) {
-    return (
-      <p className="border-t border-line bg-surface px-4 py-4 text-sm font-semibold text-multhalf-ink sm:px-7">
-        Tu equipo pega súper efectivo a los 18 tipos. No hay huecos ofensivos.
-      </p>
-    );
-  }
+  if (uncovered.length === 0) return null;
 
   return (
     <section
       aria-labelledby="huecos"
-      className="flex flex-col gap-3 border-t border-line bg-surface px-4 py-4 sm:px-7"
+      className="flex flex-col gap-2 border-t border-line bg-surface px-4 py-4 sm:px-7"
     >
       <h2 id="huecos" className="font-mono text-[11px] font-bold tracking-[.14em] text-ink-muted">
-        HUECOS OFENSIVOS
+        TYPINGS SIN RESPUESTA
       </h2>
 
-      {gaps.length > 0 ? (
-        <div className="flex flex-wrap items-center gap-2.5">
-          <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
-            {gaps.map((type) => (
-              <li key={type}>
-                <TypeChip type={type} size="sm" tone="raised" />
-              </li>
-            ))}
-          </ul>
-          <span className="text-sm text-ink-muted">nadie del equipo les pega súper efectivo</span>
-        </div>
-      ) : null}
-
-      {uncovered.length > 0 ? (
-        <div className="flex flex-col gap-2">
-          <p className="text-[13px] text-ink-dim">
-            Los typings más comunes contra los que no tienes nada que llegue a ×2:
-          </p>
-          <ul className="m-0 flex list-none flex-wrap gap-1.5 p-0">
-            {uncovered.map((entry) => (
-              <li
-                key={entry.slug}
-                className="inline-flex h-8 items-center gap-2 rounded-lg bg-surface-2 px-2.5 text-[13px]"
-              >
-                <span className="font-medium text-ink">{typingName(entry.types)}</span>
-                <span className="font-mono text-[11px] text-ink-dim">{entry.count}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
+      <p className="text-[13px] text-ink-dim">
+        Los typings más comunes contra los que no tienes nada que llegue a ×2:
+      </p>
+      <ul className="m-0 flex list-none flex-wrap gap-1.5 p-0">
+        {uncovered.map((entry) => (
+          <li
+            key={entry.slug}
+            className="inline-flex h-8 items-center gap-2 rounded-lg bg-surface-2 px-2.5 text-[13px]"
+          >
+            <span className="font-medium text-ink">{typingName(entry.types)}</span>
+            <span className="font-mono text-[11px] text-ink-dim">{entry.count}</span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
